@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+main,
+#three-users {
+  display: flex;
+  background-color: bisque;
+  font-family: cursive;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#three-users {
+  display: flex;
+}
+main > div {
+  border: solid 1px black;
+  width: calc(100% / 3 - 2rem);
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: cadetblue;
+  border-radius: 25px;
+}
+div > span {
+  margin: 1rem;
+}

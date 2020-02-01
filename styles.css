@@ -1,0 +1,66 @@
+body {
+  background-color: wheat;
+  font-family: sans-serif;
+}
+body > h1 {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-decoration: underline;
+  text-shadow: 1px 1px 2px grey;
+}
+.profilePic {
+  height: 3rem;
+  width: 3rem;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userContainer {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.userContainer > * > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.number {
+  color: white;
+  margin: 1.5rem;
+  background-color: rgb(73, 141, 118);
+  padding: 10px;
+  border-radius: 15px;
+  border: solid rgb(70, 68, 68) 1px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.user1,
+.user2,
+.user3 {
+  border: solid 1px rgb(70, 68, 68);
+  border-radius: 15px;
+  background-color: rgb(73, 141, 118);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.userName,
+.userEmail,
+.avatarContainer {
+  padding: 1rem;
+}
+.avatar {
+  border-radius: 50%;
+}

@@ -10,8 +10,8 @@ function fetchData() {
 
     Promise.all([user1Promise, user2Promise, user3Promise])
         .then(result => {
-            function render() {
-                result.map((user, idx) => {
+            function render(arr) {
+                arr.map((user, idx) => {
                     const usersList = document.querySelector(`#user${idx + 1}`);
     
                     const userHtml = `
@@ -32,14 +32,15 @@ function fetchData() {
                         
                         if(target.tagName === 'DIV'){
                             user.selected = !user.selected
-                            console.log(user)
-                            console.log(target)
                         }
-                        render()
+
+                        // console.log([result[idx]])
+                        // render([user])
+                        render(result)
                     })
                 })
             }
-            render();
+            render(result);
         })
 }
 

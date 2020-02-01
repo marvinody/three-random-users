@@ -1,0 +1,35 @@
+body {
+    font-family: sans-serif;
+    background-color: linen;
+    color: seagreen;
+}
+
+h1  {
+    display: flex;
+    justify-content: center;
+}
+
+#users {
+    display: flex;
+}
+
+#users > ul {
+    width: calc(100% / 3 - 2rem);
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: seagreen;
+    color: white;
+}
+
+#users > ul > li {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+#profpic {
+    border-radius: 50%;
+}

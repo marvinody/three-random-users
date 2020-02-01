@@ -1,0 +1,58 @@
+h1 {
+	text-align: center;
+	cursor: pointer;
+}
+main {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+main > div > div {
+	background-color: aquamarine;
+	border: 1px solid black;
+	border-radius: 15px;
+	color: brown;
+	padding: 15px;
+	margin-top: 15px;
+	margin-right: 15px;
+}
+#card-holder {
+	text-align: center;
+	margin: 10px 0;
+	width: calc(100% / 3 - 15px);
+}
+
+a {
+	margin: 10px;
+}
+
+main > div > div > img {
+	border-radius: 70px;
+}
+
+.border-link {
+	padding: 5px;
+	border: 1px solid black;
+}
+
+.hide {
+	display: none;
+}
+
+@media screen and (max-width: 875px) {
+	main {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-content: space-around;
+	}
+
+	#card-holder {
+		width: 100%;
+	}
+	main > div > div {
+		margin-right: 0px;
+	}
+}

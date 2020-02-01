@@ -1,21 +1,34 @@
-const user = (idx) => {
-    fetch('https://acme-users-api-rev.herokuapp.com/api/users/random')
-    .then(response => response.json())
-    .then(result => {
-        const usersList = document.querySelector(`#user${idx + 1}`);
-        
-        console.log(result);
+function fetchData() {
+    const user1Promise = fetch('https://acme-users-api-rev.herokuapp.com/api/users/random')
+        .then(response => response.json())
 
-        const user = `
-            <li>${result.fullName}</li>
-            <li>${result.email}</li>
-            <li><img id="profpic" src="${result.avatar}"></li>
-        `
+    const user2Promise = fetch('https://acme-users-api-rev.herokuapp.com/api/users/random')
+        .then(response => response.json())
 
-        usersList.innerHTML = user;
-    })
+    const user3Promise = fetch('https://acme-users-api-rev.herokuapp.com/api/users/random')
+        .then(response => response.json())
+
+    Promise.all([user1Promise, user2Promise, user3Promise])
+        .then(result => {
+            result.map((user, idx) => {
+                const usersList = document.querySelector(`#user${idx + 1}`);
+
+                const userHtml = `
+                    <li>${user.fullName}</li>
+                    <li>${user.email}</li>
+                    <li><img id="profpic" src="${user.avatar}"></li>
+                `
+
+                usersList.innerHTML = userHtml;
+
+                const click = document.querySelector(`#click${idx+1}`)
+
+                click.addEventListener('click', ev => {
+                    const target = ev.target;
+                    
+                })
+            })    
+        })
 }
 
-const user1 = user(0);
-const user2 = user(1);
-const user3 = user(2);
+fetchData()

@@ -7,14 +7,21 @@ body {
 h1  {
     display: flex;
     justify-content: center;
+    padding: 2rem;
 }
 
 #users {
     display: flex;
 }
 
-#users > ul {
-    width: calc(100% / 3 - 2rem);
+#users > div > span {
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    border: 1px black solid;
+}
+
+#users > div > ul {
     margin: 1rem;
     padding: 1rem;
     border: 1px solid;
@@ -23,7 +30,7 @@ h1  {
     color: white;
 }
 
-#users > ul > li {
+#users > div > ul > li {
     list-style-type: none;
     display: flex;
     justify-content: center;

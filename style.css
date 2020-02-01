@@ -1,0 +1,33 @@
+* {
+  background-color: rgb(238, 238, 200);
+}
+h1 {
+  text-align: center;
+}
+.links {
+  text-align: center;
+}
+.image {
+  width: 10%;
+  border-radius: 50%;
+}
+li {
+  color: white;
+  list-style-type: none;
+  text-align: center;
+  background-color: rgb(65, 65, 100);
+}
+ul {
+  margin-left: 200px;
+  margin-right: 200px;
+  padding: 20px;
+  background-color: rgb(167, 167, 241);
+  align-content: center;
+  text-align: center;
+}
+/* .nameCard2,
+.nameCard {
+  width: 10rem;
+  height: 14rem;
+  background-color: blue;
+} */

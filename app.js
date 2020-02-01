@@ -64,5 +64,6 @@ window.addEventListener("hashchange", ev => {
 });
 
 title.addEventListener("click", ev => {
+  window.location.hash = "";
   renderUsers();
 });

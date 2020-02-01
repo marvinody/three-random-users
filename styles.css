@@ -1,0 +1,59 @@
+body {
+    box-sizing: border-box;
+    background-color: linen;
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin: 2rem;
+}
+
+h1 * {
+    color: darkcyan;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.links * {
+    color: darkcyan;
+    text-decoration: underline;
+}
+
+.selected {
+    border: solid 1px darkcyan;
+    border-radius: .5rem;
+    color: white;
+    background-color: darkcyan;
+    padding: .5rem;
+}
+
+.user-cards {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    color: white;
+    font-size: large;
+    background-color: darkcyan;
+    border: solid 1px black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    padding: 2rem;
+}
+
+.card * {
+    margin: 1rem;
+}
+
+.card img {
+    border-radius: 50%;
+}

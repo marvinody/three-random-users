@@ -10,24 +10,36 @@ function fetchData() {
 
     Promise.all([user1Promise, user2Promise, user3Promise])
         .then(result => {
-            result.map((user, idx) => {
-                const usersList = document.querySelector(`#user${idx + 1}`);
-
-                const userHtml = `
-                    <li>${user.fullName}</li>
-                    <li>${user.email}</li>
-                    <li><img id="profpic" src="${user.avatar}"></li>
-                `
-
-                usersList.innerHTML = userHtml;
-
-                const click = document.querySelector(`#click${idx+1}`)
-
-                click.addEventListener('click', ev => {
-                    const target = ev.target;
-                    
+            function render() {
+                result.map((user, idx) => {
+                    const usersList = document.querySelector(`#user${idx + 1}`);
+    
+                    const userHtml = `
+                        <div id="click${idx + 1}" ${ user.selected ? "class='selected'": ''}>${idx + 1}</div>
+                        <ul>
+                            <li>${user.fullName}</li>
+                            <li>${user.email}</li>
+                            <li><img id="profpic" src="${user.avatar}"></li>
+                        </ul>
+                    `
+    
+                    usersList.innerHTML = userHtml;
+    
+                    const click = document.querySelector(`#click${idx+1}`)
+    
+                    click.addEventListener('click', ev => {
+                        const target = ev.target;
+                        
+                        if(target.tagName === 'DIV'){
+                            user.selected = !user.selected
+                            console.log(user)
+                            console.log(target)
+                        }
+                        render()
+                    })
                 })
-            })    
+            }
+            render();
         })
 }
 

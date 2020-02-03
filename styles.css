@@ -8,6 +8,7 @@ h1  {
     display: flex;
     justify-content: center;
     padding: 2rem;
+    text-decoration: underline;
 }
 
 #users {
@@ -25,6 +26,11 @@ h1  {
     justify-content: center;
     font-size: 25px;
     width: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: seagreen;
 }
 
 #users > div > ul {

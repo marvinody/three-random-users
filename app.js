@@ -1,28 +1,18 @@
-const user1Promise = fetch('https://acme-users-api-rev.herokuapp.com/api/users/random')
+const randomUrl = 'http://acme.deploy.sadpanda.moe/api/users/random';
+
+const user1Promise = fetch(randomUrl)
     .then(response => response.json())
 
-const user2Promise = fetch('https://acme-users-api-rev.herokuapp.com/api/users/random')
+const user2Promise = fetch(randomUrl)
     .then(response => response.json())
 
-const user3Promise = fetch('https://acme-users-api-rev.herokuapp.com/api/users/random')
+const user3Promise = fetch(randomUrl)
     .then(response => response.json())
 
 Promise.all([user1Promise, user2Promise, user3Promise])
     .then(result => {
         render(result);
     })
-
-// window.addEventListener('hashchange', () => {
-//     const id = window.location.hash.slice(1);
-
-//     const chosen = document.querySelector(`#user${id}data`)
-
-//     if(chosen.tagName === 'DIV'){
-//         chosen.selected = !chosen.selected
-//     }
-
-//     console.log(chosen)
-// })
 
 function render(arr) {
     arr.map((user, idx) => {
@@ -35,7 +25,7 @@ function render(arr) {
                 </a>
             </div>
 
-            <ul>
+            <ul ${ user.hide ? "class='hide'": ''}>
                 <li>${user.fullName}</li>
                 <li>${user.email}</li>
                 <li><img id="profpic" src="${user.avatar}"></li>
@@ -45,11 +35,17 @@ function render(arr) {
         window.addEventListener('hashchange', () => {
             const page = window.location.hash.slice(1);
 
-            if(parseInt(page) === idx + 1){
-                user.selected = true;
-                console.log(user);
+            if (page.length) {
+                if(parseInt(page) === idx + 1){
+                    user.selected = true;
+                    user.hide = false;
+                } else {
+                    user.selected = false;
+                    user.hide = true;
+                }
             } else {
                 user.selected = false;
+                user.hide = false;
             }
 
             render(arr)
@@ -58,6 +54,3 @@ function render(arr) {
         usersList.innerHTML = userHtml;
     })
 }
-
-
-// style="visibility:hidden;"

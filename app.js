@@ -6,12 +6,39 @@ const user2 = fetch(API).then(result => result.json())
 
 const user3 = fetch(API).then(result => result.json())
 
+window.location.hash = ''
 
-const refresh = document.querySelector('h1')
+function render (user, userCount){
+    let card = document.querySelector(`#user${userCount}`)
+    let check = document.querySelector(`#user${userCount}>.card`)
+    
+    if(check == null){
+    
+    let html = `<div class='card'> 
+        <div>${user.fullName}</divs>
+         </div>
+         <div>${user.email}</divs>
+         </div>
+         <img src="${user.avatar}">
+         </div>`;
+        
+         card.innerHTML += html
 
-refresh.addEventListener('click', (ev) => {
-    document.location.reload()
-})
+     let highlightSelect = document.querySelector(`#user${userCount}>.digit`)
+     highlightSelect.className = 'selected' 
+    }   
+}
+
+function remove (userCount) {
+    let reset = document.querySelector(`#user${userCount}`)
+    
+    let html = `<div class="digit">${userCount}</div>`;
+        
+         reset.innerHTML = html
+
+     let highlightSelect = document.querySelector(`#user${userCount}>.digit`)
+     highlightSelect.className = 'digit' 
+    }   
 
 
 
@@ -21,22 +48,45 @@ Promise.all([user1, user2, user3])
         document.addEventListener('click', (ev) => {
             let selectedNum = event.target
             
+            if (selectedNum.matches('h1')){
+                window.location.hash = `ShowAll`    
+
+            }
+
             if (selectedNum.matches('.digit')){
+               
                 let seletectedDig = Number(selectedNum.innerHTML)
                 let selectedUser = result[seletectedDig - 1]
-                let card = document.querySelector(`#user${seletectedDig}`)
-                console.log(card)
-                let html = `<div class='card' id="card1"> 
-                ${selectedUser.fullName} 
-                </div>`;
-                
-                card.innerHTML += html
-
-
-                
+                window.location.hash = `#pUser${seletectedDig}`    
             }
             
+        })
+    })
+    .then(result => {
+       
+        window.addEventListener('hashchange',() => {
+         
+            let urlHash = window.location.hash
+            let userHash = urlHash.slice(1, urlHash.length)
+            let divHash = urlHash.slice(-1)
+            const useArr = [pUser1, pUser2, pUser3]
+            
+            let userCount = 0
+            if (userHash === 'ShowAll'){
+               useArr.forEach(user => {
+                    userCount++
+                    render(user, userCount)}
+            )}else{
+                let removeCount = 0
+                useArr.forEach(user => {
+                    removeCount++
+                    remove(removeCount)})
 
+                render(this[userHash], divHash)
+            }
+
+
+    
         })
     })
     

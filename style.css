@@ -24,7 +24,12 @@ h1{
     width: 17rem;
     border-radius: 2rem;
     border: black 1px solid;
-    
+}
+
+.card>div{
+    margin: 1rem;
+    word-wrap: break-word;
+    color: white
 }
 
 
@@ -35,4 +40,19 @@ h1{
     display: flex;
     justify-content: space-around;
     text-align: center;
+}
+
+img{
+    border-radius: 10rem;
+}
+
+.selected{
+    background-color:rgb(0, 128, 96);
+    color: white;
+    width: 1rem;
+    height: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    text-decoration: underline;
+    
 }

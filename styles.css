@@ -41,25 +41,18 @@ h1 {
     width: 30px;
     text-align: center;
     margin: auto;
-    border: dotted 1px gray;
+    /* border: dotted 1px gray; */
     border-radius: 0.5rem;
 }
 
-h3 {
+a {
     color: darkcyan;
-}
-
-a:visited {
-    color: darkcyan;
-}
+    font-size: 1.5rem;
+} 
 
 .selected {
     color: white;
-    background-color: darkcyan;
-}
-
-.unselected {
-    display: none;
+    background-color: darkcyan; 
 }
 
 .userInfo {

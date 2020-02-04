@@ -10,7 +10,7 @@ const renderPage = user => {
 
   window.addEventListener("hashchange", () => {
     const hash = window.location.hash.slice(1);
-    
+    //want to add a way to select only by idx
   });
 
   const pages = new Array(user.length).fill("").map((_, idx) => {
@@ -37,13 +37,13 @@ const renderPage = user => {
 
 const renderUsers = user => {
   const html = user
-    .map(user => {
+    .map((user, idx) => {
       return `
-      <div>
+      <div id = '${idx}'>
         <p>${user.fullName}</p>
         <p> ${user.email}</p>
         <img id = 'image' src="${user.avatar}">
-        </div>
+        </div>  
       
         `;
     })

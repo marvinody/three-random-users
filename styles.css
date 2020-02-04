@@ -1,1 +1,65 @@
+h1 {
+    color: teal;
+    display: flex;
+    justify-content: center; 
+}
 
+body {
+    background-color: beige;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+#users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#users > li {
+  min-width: 200px;
+  width: 30%;
+}
+
+.user {
+  background-color: teal;
+  border: 1px solid black;
+  border-radius: 15px;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.user a {
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+}
+
+.user img {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  width: 75px;
+}
+
+.pager {
+  font-size: 1rem;
+  padding: .5rem;
+  text-align: center;
+}
+
+.active .pager {
+  background-color: teal;
+  border-radius: 7px;
+  color:white;
+  font-weight: bold;
+}
+
+.hidden .user {
+  display: none;
+}

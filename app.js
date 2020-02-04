@@ -8,15 +8,15 @@ Promise.all([ user1, user2, user3 ]).then((res) => {
 });
 
 const usersList = document.querySelector('#users');
-const usersListTitle = document.querySelector('h1 a');
+const usersTitle = document.querySelector('h1 a');
 
 const renderUsers = (users) => {
   const html = users
     .map((user, ind) => {
       const { fullName, email, avatar, id } = user;
-      fetch(`https://acme-users-api-rev.herokuapp.com/api/users/${id}/notes`).then((res) => res.json()).then((res) => {
-        renderNotes(res, ind + 1);
-      });
+      fetch(`https://acme-users-api-rev.herokuapp.com/api/users/${id}/notes`)
+      .then((res) => res.json())
+      .then((res) => {});
       return `<li>
         <p><a class="pager" href="#${ind + 1}">${ind + 1}</a></p>
         <div class="user user-${ind + 1}">
@@ -29,6 +29,7 @@ const renderUsers = (users) => {
     .join('');
   usersList.innerHTML = html;
 };
+
 
 const toggleUsers = () => {
   const id = window.location.hash.slice(1);
@@ -49,4 +50,4 @@ const toggleUsers = () => {
 };
 
 window.addEventListener('hashchange', toggleUsers);
-usersListTitle.addEventListener('click', toggleUsers);
+usersTitle.addEventListener('click', toggleUsers);

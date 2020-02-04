@@ -19,7 +19,7 @@ const renderUsers = userData => {
       const { fullName, id, avatar, email } = user;
       //   console.log(fullName);
       return `
-      <div id='user-box'>
+      <div>
         <a class='links' href="#${idx + 1}">${idx + 1}</a>
             <div class='user'>
                 <div>${fullName}</div>
@@ -33,23 +33,23 @@ const renderUsers = userData => {
   main.innerHTML = html;
 };
 const toggleUsers = () => {
-  let userBox = [...document.querySelectorAll("#user-box")];
+  let userBox = [...document.querySelectorAll("main > div")];
   let id = window.location.hash.slice(1);
-  console.log(id);
   if (id) {
+    userBox[id - 1].classList.remove("hide");
+    userBox[id - 1].classList.add("show");
     userBox
       .filter((user, idx) => {
+          console.log(user.classList.value)
         idx !== id - 1;
       })
-      .forEach(user => {
-        user.classList.add("hidden");
-        user.classList.remove("active");
+      .forEach(user1 => {
+        user1.classList.add("hide");
+        user1.classList.remove("show");
       });
-    userBox[id - 1].classList.remove("hidden");
-    userBox[id - 1].classList.add("active");
   } else {
     userBox.forEach(user => {
-      user.classList.remove("hidden", "active");
+      user.classList.remove("hide", "show");
     });
   }
 };

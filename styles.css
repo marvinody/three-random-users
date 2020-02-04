@@ -49,7 +49,7 @@ main,
   margin-left: 45%;
   padding: 1rem;
 }
-.active .links {
+.show .links {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -62,9 +62,9 @@ main,
   padding: 1rem;
   background-color: green;
 }
-.active .user {
+.show .user {
   background-color: green;
 }
-.hidden {
+.hide {
     display: none;
 }

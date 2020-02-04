@@ -22,7 +22,7 @@ window.addEventListener('hashchange', () => {
             // card.style.order = order[card.getAttribute('data-id')]
 
             if (card.getAttribute('data-id') === idStr) {
-                console.log('hey')
+              
                 card.classList.add('selected')
                 card.classList.remove('hidden')
             } else {
@@ -47,9 +47,9 @@ const renderUsers = ()=>{
             </div>
         `
     }).join('')
-    console.log(html)
+
     usersBox.innerHTML = html
-    renderPages()
+    
 }
 
 Promise.all([fetch(usersURL), fetch(usersURL), fetch(usersURL)])
@@ -59,6 +59,7 @@ Promise.all([fetch(usersURL), fetch(usersURL), fetch(usersURL)])
             users.push(data[i])
         }
         renderUsers(users)
+        renderPages()
     })
 
 

@@ -2,9 +2,11 @@ const usersBox = document.querySelector('.users')
 const links = document.querySelector('.links')
 const usersURL = 'https://acme-users-api-rev.herokuapp.com/api/users/random'
 let users = []
+// but you don't use this idx anywhere else!
 let idx = window.location.hash.slice(1) //pulls the number after the # as a string
 
-
+// good comments!
+// a little long and sometimes should be on the next line, but comments are good!
 window.addEventListener('hashchange', () => { //is waiting for any change in has, click event not needed
     const idStr = window.location.hash.slice(1) //index after has as string needed because data-is is a string
     const idNum = window.location.hash.slice(1) * 1 //index as a number, needed for logic
@@ -17,7 +19,7 @@ window.addEventListener('hashchange', () => { //is waiting for any change in has
         })
     } else {
 
-
+        // good use of forEach. I like seeing you try stuff outside of for-loops
         userCards.forEach(card => {
             //if its not out of our scope then we need to check to see if it was clicked
 
@@ -36,7 +38,7 @@ window.addEventListener('hashchange', () => { //is waiting for any change in has
 
 
 const renderUsers = () => {
-
+    // beautiful .map usage!
     const html = users.map((user, idx) => {
         return `
             <div class='user' data-id=${idx + 1}>
@@ -52,6 +54,8 @@ const renderUsers = () => {
 }
 
 Promise.all([fetch(usersURL), fetch(usersURL), fetch(usersURL)])
+    // oh man, great idea of using .map here since they all need the .json treatment
+    // definitely see great improvement in your array skills
     .then(response => Promise.all(response.map(r => r.json())))
     .then(data => {
         for (let i = 0; i < data.length; i++) {
@@ -65,6 +69,7 @@ Promise.all([fetch(usersURL), fetch(usersURL), fetch(usersURL)])
 function renderPages() {
     let pageTotal = 3
     let html = []
+    // I'll allow this for loop
     for (let i = 0; i < pageTotal; i++) {
         html.push(
             `<div class='' data-id=${i + 1}><a href='#${i + 1}'>${i + 1}</a></div>` // for each link you need a data-id to compare to the # number (as a string)

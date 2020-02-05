@@ -13,16 +13,16 @@ window.addEventListener('hashchange', () => { //is waiting for any change in has
     if (Number.isNaN(idNum) || idNum > userCards.length || idNum <= 0) { //checking to make sure the number is workable, meaning withhin the scope of uor users (not too high or too low)
         userCards.forEach(card => {
             card.classList.remove('selected', 'hidden') //if it is out of scope, remove all classes
-   
+
         })
     } else {
-       
+
 
         userCards.forEach(card => {
-        //if its not out of our scope then we need to check to see if it was clicked
+            //if its not out of our scope then we need to check to see if it was clicked
 
             if (card.getAttribute('data-id') === idStr) { // if it was clicked (data-id === the # number but as a string) add class selected remove hidden. if no class it wont break
-              
+
                 card.classList.add('selected')
                 card.classList.remove('hidden')
             } else { //if it wasnt selected do the opposite
@@ -35,12 +35,11 @@ window.addEventListener('hashchange', () => { //is waiting for any change in has
 })
 
 
+const renderUsers = () => {
 
-const renderUsers = ()=>{
-
-    const html = users.map((user,idx) =>{
+    const html = users.map((user, idx) => {
         return `
-            <div class='user' data-id=${idx+1}>
+            <div class='user' data-id=${idx + 1}>
                 <p> ${user.fullName} </p>
                 <p> ${user.email} </p>
                 <img src="${user.avatar}" alt="User Avatar">
@@ -49,13 +48,13 @@ const renderUsers = ()=>{
     }).join('')
 
     usersBox.innerHTML = html
-    
+
 }
 
 Promise.all([fetch(usersURL), fetch(usersURL), fetch(usersURL)])
     .then(response => Promise.all(response.map(r => r.json())))
     .then(data => {
-        for(let i =0;i<data.length;i++){
+        for (let i = 0; i < data.length; i++) {
             users.push(data[i])
         }
         renderUsers(users)
@@ -63,16 +62,14 @@ Promise.all([fetch(usersURL), fetch(usersURL), fetch(usersURL)])
     })
 
 
-function renderPages(){
+function renderPages() {
     let pageTotal = 3
     let html = []
     for (let i = 0; i < pageTotal; i++) {
         html.push(
-          `<div class='' data-id=${i+1}><a href='#${i+1}'>${i+1}</a></div>` // for each link you need a data-id to compare to the # number (as a string)
+            `<div class='' data-id=${i + 1}><a href='#${i + 1}'>${i + 1}</a></div>` // for each link you need a data-id to compare to the # number (as a string)
         ) // i did i+1 in order for the links to start at 1, and to keep everything consistent
     }
     links.innerHTML = html.join('')
-  }
-
-
+}
 

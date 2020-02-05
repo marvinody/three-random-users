@@ -6,6 +6,9 @@ const user2 = fetch(API).then(result => result.json())
 
 const user3 = fetch(API).then(result => result.json())
 
+// interesting choice...
+// thought my browser was broken for a bit
+// maybe the default should be to showall?
 window.location.hash = ''
 
 function render(user, userCount) {
@@ -42,6 +45,9 @@ function remove(userCount) {
 
 
 Promise.all([user1, user2, user3])
+    // doing this results in pUser1, pUser2,.. being defined globally
+    // this is not a good approach to generally take!
+    // use the results var below
     .then(result => [pUser1, pUser2, pUser3] = result)
     .then(result => {
         document.addEventListener('click', (ev) => {
@@ -61,6 +67,7 @@ Promise.all([user1, user2, user3])
 
         })
     })
+    // this var is unused! use it somewhere...
     .then(result => {
 
         window.addEventListener('hashchange', () => {
@@ -68,10 +75,13 @@ Promise.all([user1, user2, user3])
             let urlHash = window.location.hash
             let userHash = urlHash.slice(1, urlHash.length)
             let divHash = urlHash.slice(-1)
+            // these are the globals again but can be replaced with just result
             const useArr = [pUser1, pUser2, pUser3]
 
             let userCount = 0
             if (userHash === 'ShowAll') {
+                // take a look at the docs for foreach, filter, map fns
+                // see what the callback fn can take
                 useArr.forEach(user => {
                     userCount++
                     render(user, userCount)

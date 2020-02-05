@@ -1,6 +1,9 @@
+// good pulling the url out!
 const randomUserURL = 'https://acme-users-api-rev.herokuapp.com/api/users/random'
 const usersContainer = document.querySelector('#usersContainer')
 
+// if you have commented out code, it should probably be deleted!
+// keep this in mind moving forward...
 const render3RandomUsers = (userObjsArr) => {
     //console.log(userObjsArr);
     const html = userObjsArr.map(user => {
@@ -21,10 +24,13 @@ const render3RandomUsers = (userObjsArr) => {
     usersContainer.innerHTML = html
 }
 
+// you don't use p again, so it maybe shouldn't be assigned to a variable
 const p = Promise.all([fetch(randomUserURL), fetch(randomUserURL), fetch(randomUserURL)])
     .then(response => Promise.all(response.map(r => r.json())))
     .then(data => render3RandomUsers(data))
 
+
+// I like a helper function helping you!
 const notSelected = (numArr, selectedNum) => {
     if (!selectedNum) {
         return []
@@ -34,7 +40,7 @@ const notSelected = (numArr, selectedNum) => {
 
 window.addEventListener('hashchange', () => {
     let selectedId = window.location.hash.slice(1)
-    selectedId = parseInt(selectedId)
+    selectedId = parseInt(selectedId) // parseInt SHOULD be given a second param
     let unSelectedArr = notSelected([1, 2, 3], selectedId)
 
     const allNumberboxs = document.querySelectorAll(`a`)
@@ -44,6 +50,10 @@ window.addEventListener('hashchange', () => {
         allItems.forEach(item => item.style.visibility = 'visible')
         allNumberboxs.forEach(item => item.classList.remove('selected'))
     } else {
+        // this is a lot of style stuff.
+        // maybe simplifying this with just classes (like you did the number boxes)
+        // or having helper functions would help reduce the logic here
+        // variable names are good for the most part I think!
         allNumberboxs.forEach(item => item.classList.remove('selected'))
         const selectedItem = document.querySelector(`ul#userInfo${selectedId}`)
         selectedItem.style.visibility = 'visible'

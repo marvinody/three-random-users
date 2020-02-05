@@ -4,13 +4,13 @@ const userThree = fetch('https://acme-users-api-rev.herokuapp.com/api/users/rand
 
 const p = Promise.all([userOne, userTwo, userThree])
     .then(responses => {
-        renderUsers(responses);
-        userLinks(responses);
-        return responses;
+        renderUsers(responses)
+        userLinks(responses)
+        return responses
     })
 
-const userCards = document.querySelector('.user-cards');
-const links = document.querySelector('.links');
+const userCards = document.querySelector('.user-cards')
+const links = document.querySelector('.links')
 
 const renderUsers = (users) => {
     const html = users.map(user => {
@@ -21,22 +21,22 @@ const renderUsers = (users) => {
                 <img src="${user.avatar}">
             </div>
         `
-    }).join('');
-    userCards.innerHTML = html;
+    }).join('')
+    userCards.innerHTML = html
 }
 
 const userLinks = (responses) => {
-    const num = responses.length;
+    const num = responses.length
     const userLinkArr = []
 
     for (let i = 0; i < num; i++) {
-        userLinkArr.push(`<a href=#${i} class=${window.location.hash.slice(1) === i.toString() ? "selected" : ''}>${i + 1}</a>`);
+        userLinkArr.push(`<a href=#${i} class=${window.location.hash.slice(1) === i.toString() ? 'selected' : ''}>${i + 1}</a>`)
     }
-    links.innerHTML = userLinkArr.join('');
+    links.innerHTML = userLinkArr.join('')
 }
 
 window.addEventListener('hashchange', () => {
-    const id = window.location.hash.slice(1);
+    const id = window.location.hash.slice(1)
 
     if (window.location.hash.length > 1) {
         p.then(users => {
@@ -46,7 +46,7 @@ window.addEventListener('hashchange', () => {
     } else {
         p.then(users => {
             renderUsers(users)
-            userLinks(users);
+            userLinks(users)
         })
     }
 })

@@ -1,7 +1,13 @@
+// some of these are never used...
+// make sure you remove them if you dont use it
+// use it or lose it
 let links = document.querySelector('.links')
 let nameCard = document.querySelector('.nameCard')
 let users = document.querySelector('.users')
 let list
+
+// defining variables outside like this tends to be buggy. Better to do stuff
+// inside your getUsers function and call something else with the data
 let dataThreeUsers = []
 const getUsers = async function () {
   const user1 = fetch(
@@ -25,12 +31,16 @@ const getUsers = async function () {
   const dataUser2 = data[1]
   const dataUser3 = data[2]
   dataThreeUsers = [dataUser1, dataUser2, dataUser3]
+  // I think you can condense this a lot if you use .map and use render inside here
 }
 getUsers()
+
+// you never use this function!
 function reload() {
   location.reload()
 }
 
+// this is also never used
 function removeUsers() {
   let index = location.hash.slice(1)
   index = parseInt(index)
@@ -43,12 +53,16 @@ function removeUsers() {
 // links.addEventListener("click", function() {
 //   removeUsers();
 // });
+
 window.addEventListener('hashchange', function (ev) {
   //removeUsers();
+
+  // it seems like you're fetching new users everytime the hash is changed, but
+  // you probably don't want to do that. Just hide things or show them. no need to get new ones
   getUsers()
   let index = location.hash.slice(1)
   index = parseInt(index)
-  console.log(typeof index)
+  console.log(typeof index) // ah yes, it might be a different type!
   if (index === 3) {
     for (let i = 0; i < 3; i++) {
       console.log(i)
@@ -69,8 +83,13 @@ window.addEventListener('hashchange', function (ev) {
     '<br>' +
     `<img  style='margin-top:25px' class='image' src=${dataThreeUsers[index].avatar}>`
   document.querySelector(`.user${index + 1}`).classList.add('card')
+  // so you add card class to only the one selected!
+  // but you really want to remove card from all the previous ones (so they don't show anymore)
+  // and change the selected one to be shown
 })
 
+// THIS IS A LOT OF COMMENTED CODE
+// JUST DELETE IF YOU'RE NOT USING IT!!!
 // getUsers();
 // getUsers().then(dataThreeUsers => {
 //   console.log(dataThreeUsers);

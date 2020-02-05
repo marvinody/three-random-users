@@ -1,22 +1,22 @@
-const main = document.querySelector("main");
+const main = document.querySelector('main')
 
 const randomUserURL =
-  "https://acme-users-api-rev.herokuapp.com/api/users/random";
+  'https://acme-users-api-rev.herokuapp.com/api/users/random'
 
 const fetchUser = randomUserAPI => {
-const firstUser = fetch(randomUserURL).then(res => res.json());
-const secondUser = fetch(randomUserURL).then(res => res.json());
-const thirdUser = fetch(randomUserURL).then(res => res.json());
+  const firstUser = fetch(randomUserURL).then(res => res.json())
+  const secondUser = fetch(randomUserURL).then(res => res.json())
+  const thirdUser = fetch(randomUserURL).then(res => res.json())
 
-Promise.all([firstUser, secondUser, thirdUser]).then(response => {
-  renderUsers(response);
-  toggleUsers();
-});
-};
+  Promise.all([firstUser, secondUser, thirdUser]).then(response => {
+    renderUsers(response)
+    toggleUsers()
+  })
+}
 const renderUsers = userData => {
   let html = userData
     .map((user, idx) => {
-      const { fullName, id, avatar, email } = user;
+      const { fullName, id, avatar, email } = user
       //   console.log(fullName);
       return `
       <div>
@@ -27,33 +27,33 @@ const renderUsers = userData => {
                 <img src='${avatar}'/>
         </div>
     </div>
-    `;
+    `
     })
-    .join("");
-  main.innerHTML = html;
-};
+    .join('')
+  main.innerHTML = html
+}
 const toggleUsers = () => {
-  let userBox = [...document.querySelectorAll("main > div")];
-  let id = window.location.hash.slice(1);
+  let userBox = [...document.querySelectorAll('main > div')]
+  let id = window.location.hash.slice(1)
   if (id) {
-    userBox[id - 1].classList.remove("hide");
-    userBox[id - 1].classList.add("show");
+    userBox[id - 1].classList.remove('hide')
+    userBox[id - 1].classList.add('show')
     userBox
       .filter((user, idx) => {
-          console.log(user.classList.value)
-        idx !== id - 1;
+        console.log(user.classList.value)
+        idx !== id - 1
       })
       .forEach(user1 => {
-        user1.classList.add("hide");
-        user1.classList.remove("show");
-      });
+        user1.classList.add('hide')
+        user1.classList.remove('show')
+      })
   } else {
     userBox.forEach(user => {
-      user.classList.remove("hide", "show");
-    });
+      user.classList.remove('hide', 'show')
+    })
   }
-};
+}
 
-fetchUser(randomUserURL);
-window.addEventListener("hashchange", toggleUsers);
-document.querySelector("#three-users").addEventListener("click", toggleUsers);
+fetchUser(randomUserURL)
+window.addEventListener('hashchange', toggleUsers)
+document.querySelector('#three-users').addEventListener('click', toggleUsers)
